@@ -1,0 +1,4 @@
+2015-06-30 10:01:39,542   ibmiotf.device.Client      WARNING Unable to encrypt messages because TLSv1.2 is unavailable (MQTT over SSL requires at least Python v2.7.9 or 3.4 and openssl v1.0.1)
+2015-06-30 10:01:40,649   ibmiotf.device.Client      INFO    Connected successfully: d:jq3b5v:JavaDevice:gateway_b827ebebaa92_shubham
+2015-06-30 10:02:07,766   ibmiotf.device.Client      WARNING Unable to encrypt messages because TLSv1.2 is unavailable (MQTT over SSL requires at least Python v2.7.9 or 3.4 and openssl v1.0.1)
+2015-06-30 10:02:08,498   ibmiotf.device.Client      INFO    Connected successfully: d:jq3b5v:JavaDevice:gateway_b827ebebaa92_shubham
