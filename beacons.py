@@ -13,16 +13,17 @@ import json
 
 send_url = 'http://freegeoip.net/json'
 
-#Application API Keys
-username = "a-jq3b5v-crmljq1tgd"
-password = "PSUnPW_Z(YqNNe5TMa"
+#Application API Keys from Internet of Things Service from IBM Bluemix
+username = <API-USERNAME>
+password = <API-KEY>
 
-#organization and deviceType
-organization = "jq3b5v"
-deviceType = "JavaDevice"
+#organization and deviceType of Internet of Things Service
+organization = <ORGANIZATION NAME>
+#any string for type e.g. "JavaDevice"
+deviceType = <ANY DEVICE TYPE>
 
 deviceId = str(hex(int(get_mac())))[2:]
-deviceId = 'gateway_'+deviceId[:-1]+"_shubham"
+deviceId = 'gateway_'+deviceId[:-1]
 
 request = urllib2.Request("https://"+organization+".internetofthings.ibmcloud.com/api/v0001/devices/"+deviceType)
 base64string = base64.encodestring('%s:%s' % (username, password)).replace('\n', '')
