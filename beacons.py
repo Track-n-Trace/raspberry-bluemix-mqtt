@@ -122,6 +122,5 @@ while(True):
 	deviceCli.publishEvent("greeting","json",data)
 	#time.sleep(1)
 			
-	# Disconnect the device and application from the cloud
-
+# Disconnect the device and application from the cloud
 deviceCli.disconnect()
