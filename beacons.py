@@ -17,10 +17,10 @@ send_url = 'http://freegeoip.net/json'
 username = <API-USERNAME>
 password = <API-KEY>
 
-#organization and deviceType of Internet of Things Service
-organization = <ORGANIZATION NAME>
+temp = username.split("-")
+organization = temp[1]
 #any string for type e.g. "JavaDevice"
-deviceType = <ANY DEVICE TYPE>
+deviceType = "Pi"
 
 deviceId = str(hex(int(get_mac())))[2:]
 deviceId = 'gateway_'+deviceId[:-1]
