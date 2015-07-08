@@ -1,21 +1,15 @@
 import time
 import sys
 import pprint
-import urllib, urllib2, base64, json
-from uuid import getnode as get_mac
-
-import ibmiotf.application
-import ibmiotf.device
-
+import functions
 import os
-import requests
-import json
+from uuid import getnode as get_mac
 
 send_url = 'http://freegeoip.net/json'
 
 #Application API Keys from Internet of Things Service from IBM Bluemix
-username = <API-USERNAME>
-password = <API-KEY>
+username = "a-rgecs9-i6iwaa4yp4"
+password = "!10vze9IPXCrOnjHUa"
 
 temp = username.split("-")
 organization = temp[1]
@@ -25,48 +19,7 @@ deviceType = "Pi"
 deviceId = str(hex(int(get_mac())))[2:]
 deviceId = 'gateway_'+deviceId[:-1]
 
-request = urllib2.Request("https://"+organization+".internetofthings.ibmcloud.com/api/v0001/devices/"+deviceType)
-base64string = base64.encodestring('%s:%s' % (username, password)).replace('\n', '')
-request.add_header("Authorization", "Basic %s" % base64string)
-result = urllib2.urlopen(request)
-data =  result.read()
-
-found = False
-data = json.loads(data)
-for item in data:
-	if (item['id'] == deviceId):
-		found = True
-
-if (not found):
-	values = {'type':deviceType,'id':deviceId}
-
-	request = urllib2.Request("https://"+organization+".internetofthings.ibmcloud.com/api/v0001/devices")
-	request.add_header("Authorization", "Basic %s" % base64string)
-	request.add_header('Content-Type', 'application/json')
-	result = urllib2.urlopen(request, json.dumps(values))
-	data =  result.read()
-	data = json.loads(data)
-	f = open("authToken","w")
-	f.write(data["password"])
-	f.close()
-	print "Registered!"
-
-f = open("authToken","r")
-appId = "gateway_"+deviceId
-authMethod = "token"
-authToken = f.read()
-f.close()
-
-print deviceId
-# Initialize the device client.
-try:
-	deviceOptions = {"org": organization, "type": deviceType, "id": deviceId, "auth-method": authMethod, "auth-token": authToken}
-	deviceCli = ibmiotf.device.Client(deviceOptions)
-except Exception as e:
-	print(str(e))
-	sys.exit()
-
-# Connect and send a datapoint "hello" with value "world" into the cloud as an event of type "greeting" 10 times
+deviceCli = functions.initialize(username, password, organization, deviceType, deviceId)
 deviceCli.connect()
 
 #r = requests.get(send_url)
