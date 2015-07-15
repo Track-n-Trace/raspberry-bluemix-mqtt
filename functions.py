@@ -29,7 +29,7 @@ def initialize(username, password, organization, deviceType, deviceId):
 		f = open("authToken","w")
 		f.write(data["password"])
 		f.close()
-		print "Registered!"
+		print("Registered!")
 
 	f = open("authToken","r")
 	appId = "gateway_"+deviceId
@@ -37,7 +37,7 @@ def initialize(username, password, organization, deviceType, deviceId):
 	authToken = f.read()
 	f.close()
 
-	print deviceId
+	print(deviceId)
 	# Initialize the device client.
 	try:
 		deviceOptions = {"org": organization, "type": deviceType, "id": deviceId, "auth-method": authMethod, "auth-token": authToken}

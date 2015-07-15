@@ -27,6 +27,11 @@ deviceId = 'gateway_'+deviceId[:-1]
 deviceCli = functions.initialize(username, password, organization, deviceType, deviceId)
 deviceCli.connect()
 
+#Manyata Tech Park IBM
+#lat = 13.048291
+#lon = 77.620382
+
+#EGL IBM
 lat = 12.951432
 lon = 77.643296
 
@@ -35,6 +40,7 @@ iter = 0
 
 
 device = usb.core.find(idVendor = VENDOR_ID, idProduct = PRODUCT_ID)
+
 if device.is_kernel_driver_active(0):
 	device.detach_kernel_driver(0)
 
@@ -68,7 +74,6 @@ while(True):
 				assets.remove(rfid)
 			else:
 				assets.append(rfid)
-			
 			data = { 'name' : deviceId, 'assets' : assets, 'latitude': lat, 'longitude': lon}
 			deviceCli.publishEvent("greeting","json",data)
 			
