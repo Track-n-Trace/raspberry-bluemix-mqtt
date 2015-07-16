@@ -8,8 +8,8 @@ from uuid import getnode as get_mac
 send_url = 'http://freegeoip.net/json'
 
 #Application API Keys from Internet of Things Service from IBM Bluemix
-username = "a-rgecs9-arcrtd7ntm"
-password = "0Y)xgiCXFAwKyzXh9j"
+username = "<API-KEY>"
+password = "<AUTHENTICATION-TOKEN>"
 
 temp = username.split("-")
 organization = temp[1]

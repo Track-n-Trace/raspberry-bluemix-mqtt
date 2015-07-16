@@ -13,8 +13,8 @@ VENDOR_ID = 0X8ff
 PRODUCT_ID = 0x9
 
 #Application API Keys from Internet of Things Service from IBM Bluemix
-username = "a-rgecs9-i6iwaa4yp4"
-password = "!10vze9IPXCrOnjHUa"
+username = "<API-KEY>"
+password = "<AUTHENTICATION-TOKEN>"
 
 temp = username.split("-")
 organization = temp[1]
